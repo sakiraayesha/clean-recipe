@@ -1,0 +1,1 @@
+<div class="rounded-xl bg-[#EEEDE7] px-3 py-1 text-sm font-bold">{{ $slot }}</div>
