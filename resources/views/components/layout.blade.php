@@ -7,10 +7,10 @@
     <title>Cream Puff</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="min-h-screen flex flex-col">
     <x-nav></x-nav>
 
-    <main class="px-10 py-10">
+    <main class="px-10 pt-24 pb-10">
         {{ $slot }}
     </main>
 

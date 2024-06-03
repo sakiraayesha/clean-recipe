@@ -1,24 +1,31 @@
-<nav class="px-5 py-2 flex justify-between items-center bg-[#EEEDE7]">
-    <div>
-        <a href="/" class="inline-flex items-center space-x-1">
-            <img src="{{ Vite::asset('resources/images/logo.svg') }}" width="40px"/>
-            <span class="font-bold">cream puff</span>    
-        </a>
-    </div>
-    
+<nav class="fixed flex w-full top-0 px-5 py-2 justify-between items-center bg-[#EEEDE7]">
+    <x-icon-link href="/" class="flex items-center space-x-1" imgFile="logo.svg" width="40px" text="cream puff"/>
 
     <div class="hidden sm:block relative">
         <input type="text" class="pl-8 pr-2 py-1 border border-black/15 focus-visible:outline-none focus-visible:border-black/30 rounded-full" placeholder="Search recipes..."/>
-        <img class="absolute top-2 left-2" src="{{ Vite::asset('resources/images/search.svg') }}" width="20px"/>
+        <img src="{{ Vite::asset('resources/images/search.svg') }}" width="20px" class="absolute top-2 left-2" />
     </div>
 
-    <div class="flex space-x-3 sm:hidden">
-        <img class="cursor-pointer" src="{{ Vite::asset('resources/images/search.svg') }}" width="20px"/>
-        <x-icon-link href="/" imgFile="user.svg" width="22px" />
-    </div>
+    <div class="flex space-x-3">
+        <img src="{{ Vite::asset('resources/images/search.svg') }}" width="20px" class="cursor-pointer sm:hidden" title="Search" />
 
-    <div class="hidden sm:flex space-x-4">
-        <a href="/">Recipes</a>
-        <a href="/">Sign in</a>
+        <a href="/explore" class="hidden sm:block">Explore</a>
+
+        <x-icon-link :href="auth()->check() ? '/profile' : '/login'" class="sm:hidden" :title="auth()->check() ? 'Profile' : 'Log In'" imgFile="user.svg" width="22px" />
+
+        <a href={{auth()->check() ? '/profile' : '/login'}} class="hidden sm:block">{{ auth()->check() ? 'Profile' : 'Log In' }}</a>
+
+        @auth
+            <form action="/logout" method="POST">
+                @csrf
+                @method('DELETE')
+
+                <button class="cursor-pointer sm:hidden">
+                    <img src="{{ Vite::asset('resources/images/logout.svg') }}" width="20px" title="Log Out" />
+                </button>
+                
+                <button class="hidden sm:block">Log Out</button>
+            </form>
+        @endauth
     </div>
 </nav>
