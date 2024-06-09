@@ -10,7 +10,7 @@
         <x-form.field type="password" name="password" label="Password"/>
 
         <div class="flex justify-between items-center">
-            <x-form.button>Log In</x-form.button>
+            <x-button>Log In</x-button>
 
             <div class="text-sm">
                 Don't have an account? 

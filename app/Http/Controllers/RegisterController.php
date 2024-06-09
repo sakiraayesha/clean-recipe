@@ -18,14 +18,20 @@ class RegisterController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
-        $attributes = $request->validate([
-            'first_name' => ['required'],
-            'last_name' => ['required'],
+        $userAttributes = $request->validate([
+            'username' => ['required', 'unique:users'],
             'email' => ['required', 'email', 'unique:users'],
             'password' => ['required', 'confirmed', Password::min(6)],
         ]);
 
-        User::create($attributes);
+        $profileAttributes = $request->validate([
+            'first_name' => ['required'],
+            'last_name' => ['required'],
+        ]);
+
+        $user = User::create($userAttributes);
+
+        $user->profile()->create($profileAttributes);
 
         return redirect('/login')->withSuccess('Account successfully created! Please log in to share your recipes.');
     }

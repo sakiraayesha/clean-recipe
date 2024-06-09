@@ -1,4 +1,4 @@
-<nav class="fixed flex w-full top-0 px-5 py-2 justify-between items-center bg-[#EEEDE7]">
+<nav class="fixed z-10 flex w-full top-0 px-5 py-2 justify-between items-center bg-[#EEEDE7]">
     <x-icon-link href="/" class="flex items-center space-x-1" imgFile="logo.svg" width="40px" text="cream puff"/>
 
     <div class="hidden sm:block relative">
@@ -11,9 +11,9 @@
 
         <a href="/explore" class="hidden sm:block">Explore</a>
 
-        <x-icon-link :href="auth()->check() ? '/profile' : '/login'" class="sm:hidden" :title="auth()->check() ? 'Profile' : 'Log In'" imgFile="user.svg" width="22px" />
+        <x-icon-link :href="auth()->check() ? '/profile/' . auth()->id() : '/login'" class="sm:hidden" :title="auth()->check() ? 'Profile' : 'Log In'" imgFile="user.svg" width="22px" />
 
-        <a href={{auth()->check() ? '/profile' : '/login'}} class="hidden sm:block">{{ auth()->check() ? 'Profile' : 'Log In' }}</a>
+        <a href={{auth()->check() ? '/profile/' . auth()->id() : '/login'}} class="hidden sm:block">{{ auth()->check() ? 'Profile' : 'Log In' }}</a>
 
         @auth
             <form action="/logout" method="POST">
