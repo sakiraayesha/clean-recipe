@@ -1,7 +1,11 @@
-@props(['type', 'label', 'name'])
+@props(['label' => false, 'name'])
 
 <div class="space-y-2">
-    <x-form.label :for="$name">{{ $label }}</x-form.label>
-    <x-form.input :type="$type" :name="$name" :placeholder="$label" :value="old($name)" />
+    @if ($label)
+        <x-form.label :for="$name">{{ $label }}</x-form.label>
+    @endif
+
+    {{ $slot }}
+
     <x-form.error :error="$errors->first($name)" />
 </div>

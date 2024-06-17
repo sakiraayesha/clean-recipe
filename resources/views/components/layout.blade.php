@@ -7,7 +7,7 @@
     <title>Cream Puff</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col font-roboto">
     <x-nav></x-nav>
 
     <main class="px-10 pt-24 pb-10">

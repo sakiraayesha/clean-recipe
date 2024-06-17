@@ -1,6 +1,6 @@
 @props(['pinned' => false])
 
-<div>
+<div {{ $attributes }}>
     <div class="w-full relative mb-3">
         <img class="w-full h-auto" src="{{ Vite::asset('resources/images/demo-3.jpeg') }}" />
 
@@ -11,7 +11,7 @@
         @endif
     </div>
 
-    <x-page-heading>Lorem ipsum dolor sit amet</x-page-heading>
+    <h1 class="font-bold text-xl text-center mb-2">Lorem ipsum dolor sit amet</h1>
 
     <p class="text-sm text-justify">
         {{ $slot }}

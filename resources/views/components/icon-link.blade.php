@@ -4,6 +4,6 @@
     <img src="{{ Vite::asset('resources/images/' . $imgFile) }}" width={{ $width }} />
 
     @if ($text)
-        <span class="font-bold">{{ $text }}</span>
+        <span>{{ $text }}</span>
     @endif
 </a>

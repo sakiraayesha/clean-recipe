@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -22,3 +23,11 @@ Route::delete('/logout', [LoginController::class, 'destroy'])->middleware('auth'
 
 // Profile
 Route::get('/profile/{id}', [ProfileController::class, 'show']);
+
+// Recipe
+Route::middleware('auth')->group(function () {
+    Route::get('/recipes/create', [RecipeController::class, 'create'])->middleware('auth');
+    Route::post('/recipes', [RecipeController::class, 'store'])->middleware('auth');
+});
+
+Route::get('/recipes/{recipe}', [RecipeController::class, 'show']);

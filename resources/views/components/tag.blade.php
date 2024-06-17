@@ -1,1 +1,1 @@
-<div class="rounded-xl bg-[#EEEDE7] px-3 py-1 text-sm font-bold">{{ $slot }}</div>
+<div class="bg-[#ACD793] px-3 py-1 rounded-xl font-bold">{{ $slot }}</div>
