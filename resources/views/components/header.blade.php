@@ -1,7 +1,7 @@
 @props(['pinned' => false])
 
 <div {{ $attributes }}>
-    <div class="w-full relative mb-3">
+    <div class="w-full relative mb-5">
         <img class="w-full h-auto" src="{{ Vite::asset('resources/images/demo-3.jpeg') }}" />
 
         @if ($pinned)
@@ -11,7 +11,7 @@
         @endif
     </div>
 
-    <h1 class="font-bold text-xl text-center mb-2">Lorem ipsum dolor sit amet</h1>
+    <h1 class="font-bold text-2xl text-center mb-5">Lorem ipsum dolor sit amet</h1>
 
     <p class="text-sm text-justify">
         {{ $slot }}
