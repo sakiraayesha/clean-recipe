@@ -1,5 +1,5 @@
 <nav class="fixed z-10 flex w-full top-0 px-5 py-2 justify-between items-center bg-[#F3CA52]">
-    <x-icon-link href="/" class="flex items-center space-x-1 font-bold" imgFile="logo.svg" width="40px" text="cream puff"/>
+    <x-icon-link href="/" class="flex items-center space-x-1 font-bold" imgFile="logo.svg" width="40px" text="clean recipe"/>
 
     <div class="hidden sm:block relative">
         <input type="text" class="pl-8 pr-2 py-1 border border-black/15 focus-visible:outline-none focus-visible:border-black/30 rounded-full" placeholder="Search recipes..."/>
