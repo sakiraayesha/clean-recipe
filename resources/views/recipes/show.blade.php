@@ -25,7 +25,7 @@
 
         <div class="flex flex-wrap gap-2 mb-5 text-xs">
             @foreach ($recipe->tags as $tag)
-                <x-tag>{{ $tag->name }}</x-tag>
+                <x-tag :tag="$tag" />
             @endforeach
         </div>
 
@@ -64,7 +64,11 @@
                 <p class="text-sm text-black/60 self-start text-justify mb-3">{{ $recipe->user->profile->about }}</p>
             </div>
     
-            <x-button>{{ auth()->id() == $recipe->user_id ? 'Edit Profile' : 'Follow' }}</x-button>
+            @if (auth()->id() == $recipe->user_id)
+                <x-button type="button" class="w-fit mx-auto">Edit Profile</x-button>
+            @else
+                <x-follow-unfollow-button :user="$recipe->user" />
+            @endif
         </div>
 
         <x-recipe-info-card class="hidden sm:flex" :recipe="$recipe" />
@@ -74,7 +78,7 @@
         <div class="w-full flex flex-col items-center gap-5 justify-center mb-5">
             <h2 class="text-center text-lg font-bold">More From The Chef</h2>
 
-            <div class="flex flex-wrap justify-center items-center gap-5">
+            <div class="flex flex-wrap gap-5 justify-center">
                 @foreach ($recipe->user->recipes->except($recipe->id) as $moreRecipe)
                     <x-card-small :recipe="$moreRecipe" />
                 @endforeach
@@ -85,7 +89,7 @@
     <section class="w-full flex flex-col items-center gap-5 justify-center mb-5">
         <h2 class="text-center text-lg font-bold">More Like This Recipe</h2>
 
-        <div class="flex flex-wrap justify-center items-center gap-5">
+        <div class="flex flex-wrap gap-5 justify-center">
             <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
             <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
             <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
@@ -94,3 +98,5 @@
         </div>
     </section>
 </x-layout>
+
+<script type="module" src="{{ Vite::asset('resources/js/follow-unfollow.js') }}"></script>

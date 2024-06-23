@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FollowController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
@@ -25,8 +26,14 @@ Route::get('/profile/{id}', [ProfileController::class, 'show']);
 
 // Recipe
 Route::middleware('auth')->group(function () {
-    Route::get('/recipes/create', [RecipeController::class, 'create'])->middleware('auth');
-    Route::post('/recipes', [RecipeController::class, 'store'])->middleware('auth');
+    Route::get('/recipes/create', [RecipeController::class, 'create']);
+    Route::post('/recipes', [RecipeController::class, 'store']);
 });
 
 Route::get('/recipes/{recipe}', [RecipeController::class, 'show']);
+
+// Follow
+Route::middleware('auth')->group(function () {
+    Route::post('/follow', [FollowController::class, 'store']);
+    Route::delete('/unfollow', [FollowController::class, 'destroy']);
+});

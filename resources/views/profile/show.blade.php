@@ -9,10 +9,12 @@
 
         <div class="space-y-2">
             <div class="flex font-bold text-sm pb-2 border-b border-black/10">
-                <span>Followers</span><span class="ml-auto">219</span>
+                <span>Followers</span>
+                <span class="ml-auto followers-count">{{ $profile->user->getFollowersCount() }}</span>
             </div>
             <div class="flex font-bold text-sm pb-2 border-b border-black/10">
-                <span>Followings</span><span class="ml-auto">176</span>
+                <span>Followings</span>
+                <span class="ml-auto">{{ $profile->user->getFollowingsCount() }}</span>
             </div>
         </div> 
 
@@ -34,7 +36,11 @@
             </div>
         </div>
 
-        <x-button class="w-fit mx-auto">{{ auth()->id() == $profile->user_id ? 'Edit Profile' : 'Follow' }}</x-button>
+        @if (auth()->id() == $profile->user_id)
+            <x-button type="button" class="w-fit mx-auto">Edit Profile</x-button>
+        @else
+            <x-follow-unfollow-button :user="$profile->user" />
+        @endif
     </section>
 
     <section class="flex flex-col gap-10">
@@ -76,3 +82,5 @@
         </div>
     </section>
 </x-layout>
+
+<script type="module" src="{{ Vite::asset('resources/js/follow-unfollow.js') }}"></script>

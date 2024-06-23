@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Profile;
 use App\Models\Recipe;
 use App\Models\Tag;
 use App\Models\User;
@@ -16,11 +15,11 @@ class HomeController extends Controller
     {
         $latestRecipes = Recipe::latest()->take(6)->get();
 
-        $popularTags = Tag::withCount('recipes')->orderBy('recipes_count', 'desc')->take(10)->get();
-
         $trendingRecipes = Recipe::take(5)->get(); //temp
         
-        $topChefs = User::withCount('recipes')->orderBy('recipes_count', 'desc')->with('profile')->take(10)->get(); //temp                 
+        $topChefs = User::withCount('followers')->orderBy('followers_count', 'desc')->with('profile')->take(10)->get();  
+                
+        $popularTags = Tag::withCount('recipes')->orderBy('recipes_count', 'desc')->take(10)->get();
 
         return view('home', [
             'latestRecipes' => $latestRecipes,
