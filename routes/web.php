@@ -22,7 +22,7 @@ Route::middleware('guest')->group(function () {
 Route::delete('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 // Profile
-Route::get('/profile/{id}', [ProfileController::class, 'show']);
+Route::get('/profiles/{id}', [ProfileController::class, 'show']);
 
 // Recipe
 Route::middleware('auth')->group(function () {

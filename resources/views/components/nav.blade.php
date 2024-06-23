@@ -12,9 +12,9 @@
 
         <a href="/recipes" class="hidden sm:block">Explore</a>
 
-        <x-icon-link :href="auth()->check() ? '/profile/' . auth()->id() : '/login'" class="sm:hidden" :title="auth()->check() ? 'Profile' : 'Log In'" imgFile="user.svg" width="22px" />
+        <x-icon-link :href="auth()->check() ? '/profiles/' . auth()->id() : '/login'" class="sm:hidden" :title="auth()->check() ? 'Profile' : 'Log In'" imgFile="user.svg" width="22px" />
 
-        <a href={{auth()->check() ? '/profile/' . auth()->id() : '/login'}} class="hidden sm:block">{{ auth()->check() ? 'Profile' : 'Log In' }}</a>
+        <a href={{auth()->check() ? '/profiles/' . auth()->id() : '/login'}} class="hidden sm:block">{{ auth()->check() ? 'Profile' : 'Log In' }}</a>
 
         @auth
             <form action="/logout" method="POST">

@@ -3,7 +3,7 @@
         <h1 class="font-bold text-xl text-justify mb-1">{{ $recipe->title }}</h1>
 
         <div class="flex justify-between items-center mb-3 text-black/50">
-            <a href="/profile/{{ $recipe->user_id }}">
+            <a href="/profiles/{{ $recipe->user_id }}">
                 <span class="font-semibold">{{ $recipe->user->username }}</span>
             </a>
             <span class="text-sm">Published on {{ \Carbon\Carbon::parse($recipe->created_at)->isoFormat('MMM Do, YYYY') }}</span>
@@ -38,7 +38,7 @@
             <form action="/comments" method="POST" class="mb-5 space-y-5">
                 @csrf
                 
-                <x-form.input type="text" name="comment" placeholder="Add a comment..." :value="old('comment')" />
+                <x-forms.input type="text" name="comment" placeholder="Add a comment..." :value="old('comment')" />
     
                 <x-button class="ml-auto">Post</x-button>
             </form>
@@ -58,7 +58,7 @@
 
             <div class="flex flex-col items-center mb-2">
                 <h2 class="font-bold text-sm">About The Chef</h2>
-                <a href="/profile/{{ $recipe->user_id }}">
+                <a href="/profiles/{{ $recipe->user_id }}">
                     <h3 class="font-bold text-black/55 mb-1">{{ $recipe->user->profile->first_name . " " . $recipe->user->profile->last_name}}</h3>
                 </a>
                 <p class="text-sm text-black/60 self-start text-justify mb-3">{{ $recipe->user->profile->about }}</p>

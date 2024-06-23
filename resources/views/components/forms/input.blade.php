@@ -6,7 +6,7 @@
             : 'block w-full py-2 px-2 border border-black/15 focus-visible:outline-none focus-visible:border-black/30 rounded-lg';
 @endphp
 
-<x-form.field :label="$label" :name="$name">
+<x-forms.field :label="$label" :name="$name">
     <input {{ $attributes(['class' => $class, 'name' => $name]) }} />
 
     @if ($button)
@@ -18,4 +18,4 @@
             <ul></ul>
         </div>
     @endif
-</x-form.field>
+</x-forms.field>

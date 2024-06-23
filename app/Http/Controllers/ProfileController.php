@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Recipe;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
@@ -16,6 +15,6 @@ class ProfileController extends Controller
 
         $recipes = $profile->user->recipes;
 
-        return view('profile.show', ['profile' => $profile, 'recipes' => $recipes]);
+        return view('profiles.show', ['profile' => $profile, 'recipes' => $recipes]);
     }
 }

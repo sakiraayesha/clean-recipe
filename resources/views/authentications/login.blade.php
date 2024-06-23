@@ -6,9 +6,9 @@
     <form action="/login" method="POST" class="max-w-sm mx-auto space-y-5">
         @csrf
         
-        <x-form.input type="email" name="email" placeholder="Email" :value="old('email')" label="Email"  />
+        <x-forms.input type="email" name="email" placeholder="Email" :value="old('email')" label="Email"  />
 
-        <x-form.input type="password" name="password" placeholder="Password" label="Password" />
+        <x-forms.input type="password" name="password" placeholder="Password" label="Password" />
 
         <div class="flex flex-col gap-3 min-[390px]:flex-row min-[390px]:justify-between min-[390px]:items-center">
             <x-button class="w-fit">Log In</x-button>
