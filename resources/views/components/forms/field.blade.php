@@ -1,8 +1,8 @@
-@props(['label' => false, 'name'])
+@props(['label' => false, 'fileInput' => false, 'name'])
 
 <div class="space-y-2">
     @if ($label)
-        <x-forms.label :for="$name">{{ $label }}</x-forms.label>
+        <x-forms.label :for="$name" :fileInput="$fileInput">{{ $label }}</x-forms.label>
     @endif
 
     {{ $slot }}

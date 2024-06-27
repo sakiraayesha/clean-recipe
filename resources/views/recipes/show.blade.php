@@ -54,7 +54,7 @@
 
     <section class="flex flex-col mt-20 mb-5 sm:float-left sm:w-[calc(33%-2rem)] sm:ml-8 sm:mt-14">
         <div class="flex flex-col items-center bg-[#F0EBE3] p-3 mb-5">
-            <img src={{ Vite::asset('resources/images/profile.jpg') }} class="size-20 rounded-full object-cover mb-3 -mt-10" />
+            <img src={{ asset($recipe->user->profile->image ?? 'defaults/profile-image.svg') }} class="size-20 rounded-full border border-black/10 object-cover mb-3 -mt-10" />
 
             <div class="flex flex-col items-center mb-2">
                 <h2 class="font-bold text-sm">About The Chef</h2>

@@ -56,7 +56,7 @@
 
         <div class="flex flex-wrap gap-5 justify-center">
             @foreach ($topChefs as $chef)
-                <x-card-round href="/profiles/{{ $chef->id }}" imagePath="{{ $chef->profile->image }}">
+                <x-card-round href="/profiles/{{ $chef->id }}" imagePath="{{ $chef->profile->image ?? 'defaults/profile-image.svg' }}">
                     {{ $chef->profile->first_name . " " . $chef->profile->last_name }} 
                 </x-card-round>
             @endforeach

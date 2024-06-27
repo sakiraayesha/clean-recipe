@@ -8,6 +8,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
+// Home
 Route::get('/', [HomeController::class, 'index']);
 
 // Authentication
@@ -22,7 +23,12 @@ Route::middleware('guest')->group(function () {
 Route::delete('/logout', [LoginController::class, 'destroy'])->middleware('auth');
 
 // Profile
-Route::get('/profiles/{id}', [ProfileController::class, 'show']);
+Route::get('/profiles/{profile}', [ProfileController::class, 'show']);
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profiles/{profile}/edit', [ProfileController::class, 'edit']);
+    Route::patch('/profiles/{profile}', [ProfileController::class, 'update']);
+});
 
 // Recipe
 Route::middleware('auth')->group(function () {

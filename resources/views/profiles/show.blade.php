@@ -1,6 +1,6 @@
 <x-layout>
     <section class="w-full bg-[#F0EBE3] px-4 pb-8 mb-10 sm:w-48 sm:float-left sm:mr-4 md:w-64 xl:w-80 flex flex-col gap-5 mt-10">
-        <img src={{ Vite::asset('resources/images/profile.jpg') }} class="size-20 rounded-full object-cover -mt-10 mx-auto" />
+        <img src={{ asset($profile->image ?? 'defaults/profile-image.svg') }} class="size-20 rounded-full border border-black/10 object-cover -mt-10 mx-auto" />
 
         <div class="flex flex-col gap-1 items-center">
             <h3 class="font-bold">{{ $profile->first_name . " " . $profile->last_name}}</h3>
@@ -18,26 +18,26 @@
             </div>
         </div> 
 
-        <div class="space-y-1">
-            <h3 class="font-bold">About</h3>
-            <p class="text-sm text-black/60">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            </p>
-        </div>
-
-        <div class="space-y-2">
-            <h3 class="font-bold">Links</h3>
-            <div class="inline-flex space-x-5">
-                <x-icon-link href="/" imgFile="instagram.svg" />
-                <x-icon-link href="/" imgFile="tiktok.svg" />
-                <x-icon-link href="/" imgFile="facebook.svg" />
-                <x-icon-link href="/" imgFile="twitter.svg" />
-                <x-icon-link href="/" imgFile="linkedin.svg" />
+        @if ($profile->about)
+            <div class="space-y-1">
+                <h3 class="font-bold">About</h3>
+                <p class="text-sm text-black/60">{{ $profile->about }}</p>
             </div>
-        </div>
+        @endif 
+
+        @if ($socials)
+            <div class="space-y-2">
+                <h3 class="font-bold">Socials</h3>
+                <div class="flex flex-wrap gap-5">
+                    @foreach ($socials as $social => $link)
+                        <x-icon-link href="{{ $link }}" imgFile="{{ $social }}.svg" />
+                    @endforeach
+                </div>
+            </div>
+        @endif
 
         @if (auth()->id() == $profile->user_id)
-            <x-button type="button" class="w-fit mx-auto">Edit Profile</x-button>
+            <x-button type="button" class="w-fit mx-auto" link="/profiles/{{ $profile->user_id }}/edit">Edit Profile</x-button>
         @else
             <x-follow-unfollow-button :user="$profile->user" />
         @endif
@@ -68,9 +68,7 @@
 
         @if (auth()->id() == $profile->user_id)
             <div class="space-x-5">
-                <a href="/recipes/create">
-                    <x-button>Create Recipe</x-button>
-                </a>
+                <x-button type="button" link="/recipes/create">Create Recipe</x-button>
                 <x-button>Add Highlight</x-button>
             </div>
         @endif
