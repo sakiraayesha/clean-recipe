@@ -1,15 +1,18 @@
 <?php
 
+use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SearchController;
+use App\Http\Controllers\TagController;
 use Illuminate\Support\Facades\Route;
 
 // Home
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', HomeController::class);
 
 // Authentication
 Route::middleware('guest')->group(function () {
@@ -43,3 +46,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/follow', [FollowController::class, 'store']);
     Route::delete('/unfollow', [FollowController::class, 'destroy']);
 });
+
+// Search & Explore
+Route::get('/search', SearchController::class);
+Route::get('/explore/topics/{topic}', ExploreController::class);
+Route::get('/tags/{tag}', TagController::class);

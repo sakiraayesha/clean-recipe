@@ -6,7 +6,7 @@
     
         <div class="text-sm text-black/50">{{ \Carbon\Carbon::parse($recipe->created_at)->isoFormat('MMM Do, YYYY') }}</div>
     
-        <img class="aspect-square my-2" src="{{ asset($recipe->image) }}" />
+        <img class="aspect-square object-cover my-2" src="{{ asset($recipe->image) }}" />
     
         <x-interactions-bar class="mb-2" />
     

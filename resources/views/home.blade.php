@@ -77,16 +77,11 @@
         <h2 class="text-center text-lg font-bold">Explore</h2>
 
         <div class="flex flex-wrap gap-5 justify-center">
-            <x-card-round>Breakfast</x-card-round>
-            <x-card-round>Brunch</x-card-round>
-            <x-card-round>Appetizer</x-card-round>
-            <x-card-round>Lunch</x-card-round>
-            <x-card-round>Dinner</x-card-round>
-            <x-card-round>Dessert</x-card-round>
-            <x-card-round>Asian</x-card-round>
-            <x-card-round>Mexican</x-card-round>
-            <x-card-round>Middle Estern</x-card-round>
-            <x-card-round>Slow Cooker</x-card-round>
+            @foreach ($popularTopics as $topic)
+                <x-card-round href="/explore/topics/{{ $topic->name }}" imagePath="{{ $topic->image }}">
+                    {{ $topic->name }} 
+                </x-card-round>
+            @endforeach
         </div>
     </section>
     
