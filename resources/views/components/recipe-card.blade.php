@@ -8,7 +8,7 @@
     
         <img class="aspect-square object-cover my-2" src="{{ asset($recipe->image) }}" />
     
-        <x-interactions-bar class="mb-2" />
+        <x-interactions-bar class="mb-2" :likeable="$recipe" />
     
         <p class="text-sm text-justify">
             {{ $recipe->description }}

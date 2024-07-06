@@ -3,6 +3,7 @@
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RecipeController;
 use App\Http\Controllers\ProfileController;
@@ -19,7 +20,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'create']);
     Route::post('/register', [RegisterController::class, 'store']);
 
-    Route::get('/login', [LoginController::class, 'create']);
+    Route::get('/login', [LoginController::class, 'create'])->name('login');
     Route::post('/login', [LoginController::class, 'store']);
 });
 
@@ -40,6 +41,12 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::get('/recipes/{recipe}', [RecipeController::class, 'show']);
+
+// Like
+Route::middleware('auth')->group(function () {
+    Route::post('/like', [LikeController::class, 'store']);
+    Route::delete('/like', [LikeController::class, 'destroy']);
+});
 
 // Follow
 Route::middleware('auth')->group(function () {

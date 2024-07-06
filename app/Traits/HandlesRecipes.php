@@ -57,9 +57,8 @@ trait HandlesRecipes
 
     }
 
-    // temp
     public function getTrendingRecipes(): Collection
     {
-        return Recipe::take(5)->get();
+        return Recipe::withCount('likes')->orderBy('likes_count', 'desc')->take(5)->get();
     }
 }

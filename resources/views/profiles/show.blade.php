@@ -39,7 +39,7 @@
         @if (auth()->id() == $profile->user_id)
             <x-button type="button" class="w-fit mx-auto" link="/profiles/{{ $profile->user_id }}/edit">Edit Profile</x-button>
         @else
-            <x-follow-unfollow-button :user="$profile->user" />
+            <x-follow-button :user="$profile->user" />
         @endif
     </section>
 
@@ -81,4 +81,4 @@
     </section>
 </x-layout>
 
-<script type="module" src="{{ Vite::asset('resources/js/follow-unfollow.js') }}"></script>
+<script type="module" src="{{ Vite::asset('resources/js/follow.js') }}"></script>

@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use App\Contracts\LikeInterface;
+use App\Traits\Likeable;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Recipe extends Model
+class Recipe extends Model implements LikeInterface
 {
-    use HasFactory;
+    use HasFactory, Likeable;
 
     protected $fillable = [
         'title',

@@ -13,7 +13,7 @@
 
         <img src={{ asset($recipe->image) }} class="w-full aspect-video object-cover mb-3" />
 
-        <x-interactions-bar class="mb-6" />
+        <x-interactions-bar class="mb-6" :likeable="$recipe" />
 
         <x-recipe-info-card class="flex sm:hidden" :recipe="$recipe" />
 
@@ -67,7 +67,7 @@
             @if (auth()->id() == $recipe->user_id)
                 <x-button type="button" class="w-fit mx-auto">Edit Profile</x-button>
             @else
-                <x-follow-unfollow-button :user="$recipe->user" />
+                <x-follow-button :user="$recipe->user" />
             @endif
         </div>
 
@@ -99,4 +99,4 @@
     </section>
 </x-layout>
 
-<script type="module" src="{{ Vite::asset('resources/js/follow-unfollow.js') }}"></script>
+<script type="module" src="{{ Vite::asset('resources/js/follow.js') }}"></script>

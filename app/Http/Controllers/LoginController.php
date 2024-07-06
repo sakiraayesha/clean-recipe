@@ -12,6 +12,10 @@ class LoginController extends Controller
 {
     public function create(): View
     {
+        if (request()->query('redirect_url')) {
+            session()->put('url.intended', request()->query('redirect_url'));
+        }
+
         return view('authentications.login');
     }
 
