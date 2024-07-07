@@ -51,7 +51,7 @@ Route::middleware('auth')->group(function () {
 // Follow
 Route::middleware('auth')->group(function () {
     Route::post('/follow', [FollowController::class, 'store']);
-    Route::delete('/unfollow', [FollowController::class, 'destroy']);
+    Route::delete('/follow', [FollowController::class, 'destroy']);
 });
 
 // Search & Explore

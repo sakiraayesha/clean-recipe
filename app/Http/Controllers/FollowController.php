@@ -3,27 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\FollowRequest;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Auth;
 
 class FollowController extends Controller
 {
-    public function store(Request $request) : void
+    public function store(FollowRequest $request): JsonResponse
     {
-        $atrributes = $request->validate([
-            'followed_id' => ['required', 'exists:users,id'],
-        ]);
-
-        Auth::user()->follow(User::find($atrributes['followed_id']));
+        return Auth::user()->toggleFollow($request->followable);
     }
 
-    public function destroy(Request $request) : void
+    public function destroy(FollowRequest $request): JsonResponse
     {
-        $atrributes = $request->validate([
-            'followed_id' => ['required', 'exists:users,id'],
-        ]);
-
-        Auth::user()->unfollow(User::find($atrributes['followed_id']));
+        return Auth::user()->toggleFollow($request->followable);
     }
 }
