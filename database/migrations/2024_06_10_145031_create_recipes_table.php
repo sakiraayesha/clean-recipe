@@ -17,13 +17,17 @@ return new class extends Migration
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
             $table->string('title');
             $table->text('description');
-            $table->string('prep_time');
-            $table->string('cook_time');
-            $table->string('servings');
+            $table->integer('prep_time');
+            $table->enum('prep_time_unit', ['mins', 'hours'])->default('mins');
+            $table->integer('cook_time');
+            $table->enum('cook_time_unit', ['mins', 'hours'])->default('mins');
+            $table->integer('total_time');
+            $table->integer('servings');
             $table->string('cuisine');
             $table->string('category');
             $table->string('image');
             $table->boolean('pinned')->default(false);
+            $table->boolean('featured')->default(false);
             $table->timestamps();
         });
     }

@@ -1,7 +1,11 @@
-@props(['fileInput' => false])
+@props(['type', 'fileType'])
 
 @php
-    $labelStyles = $fileInput ? 'block w-fit p-2 border border-black/30 rounded-lg cursor-pointer mx-auto text-sm font-semibold' : 'block text-sm font-semibold';
+    $labelStyles = $type !== 'file' ? 
+                    'block text-sm font-semibold'
+                    : ($fileType === 'Profile Image' ? 
+                    'flex justify-center items-center cursor-pointer mx-auto size-44 rounded-full border border-black/15 text-lg text-black/45' 
+                    : 'flex justify-center items-center cursor-pointer w-full aspect-square border border-black/15 text-lg text-black/45');
 @endphp
 
 <label {{ $attributes(['class' => $labelStyles]) }}>{{ $slot }}</label>

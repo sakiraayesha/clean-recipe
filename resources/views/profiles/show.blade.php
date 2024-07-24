@@ -18,10 +18,10 @@
             </div>
         </div> 
 
-        @if ($profile->about)
+        @if ($profile->bio)
             <div class="space-y-1">
-                <h3 class="font-bold">About</h3>
-                <p class="text-sm text-black/60">{{ $profile->about }}</p>
+                <h3 class="font-bold">Bio</h3>
+                <p class="text-sm text-black/60">{{ $profile->bio }}</p>
             </div>
         @endif 
 

@@ -6,12 +6,12 @@
     <form action="/login" method="POST" class="max-w-sm mx-auto space-y-5">
         @csrf
         
-        <x-forms.input type="email" name="email" placeholder="Email" :value="old('email')" label="Email"  />
+        <x-forms.field label="Email" type="email" id="email" name="email" placeholder="Email" :value="old('email')" inputStyles="w-full" />
 
-        <x-forms.input type="password" name="password" placeholder="Password" label="Password" />
+        <x-forms.field label="Password" type="password" id="password" name="password" placeholder="Password" inputStyles="w-full" />
 
         <div class="flex flex-col gap-3 min-[390px]:flex-row min-[390px]:justify-between min-[390px]:items-center">
-            <x-button class="w-fit">Log In</x-button>
+            <x-button>Log In</x-button>
 
             <div class="text-sm">
                 Don't have an account? 

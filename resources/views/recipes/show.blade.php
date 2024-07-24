@@ -15,7 +15,7 @@
 
         <x-interactions-bar class="mb-6" :likeable="$recipe" />
 
-        <x-recipe-info-card class="flex sm:hidden" :recipe="$recipe" />
+        <x-recipe-info-card class="grid sm:hidden" :recipe="$recipe" />
 
         <x-list heading="Ingredients" :list="$recipe->ingredients" fieldName="name" />
 
@@ -35,10 +35,10 @@
                 <span class="font-semibold text-black/30">12</span>
             </div>
     
-            <form action="/comments" method="POST" class="mb-5 space-y-5">
+            <form action="/comments" method="POST" class="flex flex-col gap-5 my-5">
                 @csrf
                 
-                <x-forms.input type="text" name="comment" placeholder="Add a comment..." :value="old('comment')" />
+                <x-forms.input type="text" id="comment" name="comment" placeholder="Add a comment..." inputStyles="w-full" />
     
                 <x-button class="ml-auto">Post</x-button>
             </form>
@@ -61,17 +61,17 @@
                 <a href="/profiles/{{ $recipe->user_id }}">
                     <h3 class="font-bold text-black/55 mb-1">{{ $recipe->user->profile->first_name . " " . $recipe->user->profile->last_name}}</h3>
                 </a>
-                <p class="text-sm text-black/60 self-start text-justify mb-3">{{ $recipe->user->profile->about }}</p>
+                <p class="text-sm text-black/60 self-start text-justify mb-3">{{ $recipe->user->profile->bio }}</p>
             </div>
-    
+
             @if (auth()->id() == $recipe->user_id)
-                <x-button type="button" class="w-fit mx-auto">Edit Profile</x-button>
+                <x-button type="button" class="w-fit mx-auto" link="/profiles/{{ $recipe->user_id }}/edit">Edit Profile</x-button>
             @else
                 <x-follow-button :user="$recipe->user" />
             @endif
         </div>
 
-        <x-recipe-info-card class="hidden sm:flex" :recipe="$recipe" />
+        <x-recipe-info-card class="hidden sm:grid" :recipe="$recipe" />
 
         <x-list class="hidden sm:block" heading="Notes" :list="$recipe->notes" fieldName="text" />
 

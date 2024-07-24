@@ -1,0 +1,1 @@
+<img src="{{ Vite::asset('resources/images/add.svg') }}" class="w-5 cursor-pointer add-icon" />

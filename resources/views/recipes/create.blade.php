@@ -1,60 +1,50 @@
 <x-layout>
-    <h1 class="font-bold text-lg text-center mb-10">Create a Recipe</h1>
+    <h1 class="max-w-3xl mx-auto font-bold text-3xl mb-14">Create a Recipe</h1>
 
-    <form action="/recipes" method="POST" enctype="multipart/form-data">
+    <form action="/recipes" method="POST" enctype="multipart/form-data" class="max-w-3xl mx-auto">
         @csrf
 
         <div class="flex flex-col w-full mb-8 sm:flex-row sm:justify-between">
-            <fieldset class="space-y-5 w-full sm:w-[calc(100%-14rem)] lg:w-[calc(100%-22rem)]">
-                <x-forms.input type="text" name="title" placeholder="Title" :value="old('title')" label="Title" />
+            <fieldset class="space-y-5 w-full mb-5 sm:w-52 sm:mr-8 sm:mb-0 min-[800px]:w-80">
+                <x-forms.field label="Add Photo" type="file" id="image" name="image" />
     
-                <x-forms.input type="text" name="description" placeholder="Description" :value="old('description')" label="Description" />
-            
-                <x-forms.input type="text" name="ingredient" placeholder="Ingredients" label="Ingredients" button=true />
-        
-                <x-forms.input type="text" name="instruction" placeholder="Instructions" label="Instructions" button=true />
-    
-                <x-forms.input type="text" name="note" placeholder="Notes" label="Notes" button=true />
-            </fieldset>
-            
-            <fieldset class="space-y-5 w-full mt-5 sm:w-48 sm:ml-8 sm:mt-0 lg:w-80">    
-                <x-forms.input type="text" name="prep_time" placeholder="Prep Time" :value="old('prep_time')" label="Prep Time" />
-    
-                <x-forms.input type="text" name="cook_time" placeholder="Cook Time" :value="old('cook_time')" label="Cook Time" />
-    
-                <x-forms.input type="text" name="servings" placeholder="Servings" :value="old('servings')" label="Servings" />
-    
-                <x-forms.input type="text" name="cuisine" placeholder="Cuisine" :value="old('cuisine')" label="Cuisine" />
-    
-                <x-forms.input type="text" name="category" placeholder="Category" :value="old('category')" label="Category" />
-              
-                <x-forms.input type="text" name="tag" placeholder="Tags" label="Tags" button=true />
+                <x-forms.field label="Prep Time" type="number" id="prep-time" name="prep_time" placeholder="0" :value="old('prep_time')" inputStyles="w-[calc(100%-6.063rem)] float-left mr-4 time-input" unitOptions=true />
 
-                <x-forms.input type="file" name="image" label="Image" />
+                <x-forms.field label="Cook Time" type="number" id="cook-time" name="cook_time" placeholder="0" :value="old('cook_time')" inputStyles="w-[calc(100%-6.063rem)] float-left mr-4 time-input" unitOptions=true />
+    
+                <div class="flex text-sm py-2 border-b border-black/10">
+                    <span class="font-semibold">Total Time</span>
+                    <span class="ml-auto text-black/60 total-time-string">0</span>
+                    <input type="hidden" name="total_time" id="total-time" />
+                </div>
+    
+                <x-forms.field label="Servings" id="servings" name="servings" placeholder="e.g., 6" :value="old('servings')" inputStyles="w-full" />
+    
+                <x-forms.field label="Cuisine" id="cuisine" name="cuisine" placeholder="e.g., Italian" :value="old('cuisine')" inputStyles="w-full capitalize placeholder:normal-case" />
+    
+                <x-forms.field label="Category" id="category" name="category" placeholder="e.g., Lunch" :value="old('category')"  inputStyles="w-full capitalize placeholder:normal-case" />
+              
+                <x-forms.field label="Tags" id="tags" name="tags" placeholder="e.g., Healthy (Optional)" inputStyles="w-[calc(100%-2rem)] capitalize placeholder:normal-case" addIcon=true />
+            </fieldset>
+
+            <fieldset class="space-y-5 w-full flex-1 sm:w-[calc(100%-15rem)] min-[800px]:w-[calc(100%-22rem)]">
+                <x-forms.field label="Title" id="title" name="title" placeholder="Add a title for your recipe" :value="old('title')" inputStyles="w-full" />
+    
+                <x-forms.field label="Description" id="description" name="description" placeholder="Tell us something about the recipe..." :value="old('description')" inputStyles="w-full" />
+
+                <x-forms.field label="Ingredients" id="ingredients" name="ingredients" placeholder="e.g., 1 cup diced tomato" inputStyles="w-[calc(100%-2rem)]" addIcon=true />
+        
+                <x-forms.field label="Instructions" id="instructions" name="instructions" placeholder="e.g., Heat oil in a pan on low heat..." inputStyles="w-[calc(100%-2rem)]" addIcon=true />
+    
+                <x-forms.field label="Notes" id="notes" name="notes" placeholder="Add any helpful tips (Optional)" inputStyles="w-[calc(100%-2rem)]" addIcon=true />
             </fieldset>
         </div>
 
-        <x-button class="block mx-auto">Post</x-button>
+        <div class="flex justify-end">
+            <x-button type="button" :fill=false link="/profiles/{{ auth()->id() }}">CANCEL</x-button>
+            <x-button>Post Recipe</x-button>
+        </div>
     </form>
 </x-layout>
 
-<script type="module">
-    $(document).ready(function() { 
-        $('.add-input').on('click', function() {
-            let inputName = $(this).prev().attr('name');
-            let inputValue = $(this).prev().val();
-            let inputID = inputName  + '-list';
-            let containerID = inputName  + '-list-container';
-            let listCounter = $('#' + containerID + ' ul li').length;
-            let valueList = listCounter > 0 ? JSON.parse($('#' + inputID).val()) : [];
-
-            $('#' + containerID).show();
-            $('#' + containerID + ' ul').append('<li>' + (listCounter + 1) + '. ' + inputValue + '</li>');
-
-            valueList.push(inputValue);
-            $('#' + inputID).val(JSON.stringify(valueList));
-
-            $(this).prev().val('');
-        });
-    });
-</script>
+<script type="module" src="{{ Vite::asset('resources/js/create-recipe.js') }}"></script>

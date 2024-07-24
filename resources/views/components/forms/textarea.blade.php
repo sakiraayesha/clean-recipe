@@ -1,5 +1,1 @@
-@props(['label' => false, 'name'])
-
-<x-forms.field :label="$label" :name="$name">
-    <textarea {{ $attributes(['class' => 'block w-full py-2 px-2 border border-black/15 focus-visible:outline-none focus-visible:border-black/30 rounded-lg', 'name' => $name]) }}>{{ $slot }}</textarea>
-</x-forms.field>
+<textarea {{ $attributes(['class' => 'w-full p-2 border border-black/15 focus-visible:outline-none focus-visible:border-black/30 text-sm']) }}>{{ $slot }}</textarea>

@@ -43,7 +43,7 @@ class ProfileController extends Controller
         $profileAttributes = request()->validate([
             'first_name' => ['required', 'max:50'],
             'last_name' => ['required', 'max:50'], 
-            'about' => ['nullable', 'max:255'],
+            'bio' => ['nullable', 'max:255'],
             'facebook' => ['nullable', 'active_url'],
             'instagram' => ['nullable', 'active_url'],
             'linkedin' => ['nullable', 'active_url'],

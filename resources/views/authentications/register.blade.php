@@ -2,20 +2,20 @@
     <form action="/register" method="POST" class="max-w-sm mx-auto space-y-5">
         @csrf
         
-        <x-forms.input type="text" name="first_name" placeholder="First Name" :value="old('first_name')" label="First Name" />
+        <x-forms.field label="First Name" id="first-name" name="first_name" placeholder="First Name" :value="old('first_name')" inputStyles="w-full" />
 
-        <x-forms.input type="text" name="last_name" placeholder="Last Name" :value="old('last_name')" label="Last Name" />
-
-        <x-forms.input type="text" name="username" placeholder="Username" :value="old('username')" label="Username" />
-
-        <x-forms.input type="email" name="email" placeholder="Email" :value="old('email')" label="Email" />
-
-        <x-forms.input type="password" name="password" placeholder="Password" label="Password" />
+        <x-forms.field label="Last Name" id="last-name" name="last_name" placeholder="Last Name" :value="old('last_name')" inputStyles="w-full" />
         
-        <x-forms.input type="password" name="password_confirmation" placeholder="Confirm Password" label="Confirm Password" />
+        <x-forms.field label="Username" id="username" name="username" placeholder="Username" :value="old('username')" inputStyles="w-full" />
 
+        <x-forms.field label="Email" type="email" id="email" name="email" placeholder="Email" :value="old('email')" inputStyles="w-full" />
+
+        <x-forms.field label="Password" type="password" id="password" name="password" placeholder="Password" inputStyles="w-full" />
+
+        <x-forms.field label="Confirm Password" type="password" id="password-confirmation" name="password_confirmation" placeholder="Confirm Password" inputStyles="w-full" />
+        
         <div class="flex flex-col gap-3 min-[390px]:flex-row min-[390px]:justify-between min-[390px]:items-center">
-            <x-button class="w-fit">Register</x-button>
+            <x-button>Register</x-button>
 
             <div class="text-sm">
                 Already have an account? 
