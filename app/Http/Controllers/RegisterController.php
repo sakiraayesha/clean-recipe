@@ -29,6 +29,8 @@ class RegisterController extends Controller
             'last_name' => ['required'],
         ]);
 
+        $profileAttributes['image'] = 'defaults/profile-image.svg';
+
         $user = User::create($userAttributes);
 
         $user->profile()->create($profileAttributes);

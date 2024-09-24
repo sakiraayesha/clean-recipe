@@ -80,7 +80,7 @@
 
             <div class="flex flex-wrap gap-5 justify-center">
                 @foreach ($recipe->user->recipes->except($recipe->id) as $moreRecipe)
-                    <x-card-small :recipe="$moreRecipe" />
+                    <x-card :recipe="$moreRecipe" />
                 @endforeach
             </div>
         </div>
@@ -90,11 +90,11 @@
         <h2 class="text-center text-lg font-bold">More Like This Recipe</h2>
 
         <div class="flex flex-wrap gap-5 justify-center">
-            <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
-            <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
-            <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
-            <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
-            <x-card-small>Lorem ipsum dolor sit amet</x-card-small>
+            <x-card>Lorem ipsum dolor sit amet</x-card>
+            <x-card>Lorem ipsum dolor sit amet</x-card>
+            <x-card>Lorem ipsum dolor sit amet</x-card>
+            <x-card>Lorem ipsum dolor sit amet</x-card>
+            <x-card>Lorem ipsum dolor sit amet</x-card>
         </div>
     </section>
 </x-layout>

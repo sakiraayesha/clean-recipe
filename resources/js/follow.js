@@ -12,6 +12,8 @@ $(function() {
             isFollowedByCurrentUser = !isFollowedByCurrentUser;
             $(selectedUser).data('followed', isFollowedByCurrentUser);
             $(selectedUser).text(isFollowedByCurrentUser ? 'Following' : 'Follow');
+            $(selectedUser).addClass(isFollowedByCurrentUser ? 'bg-transparent border-[#262c29] text-[#262c29]' : 'bg-[#7f8567] border-[#7f8567] text-white');
+            $(selectedUser).removeClass(isFollowedByCurrentUser ? 'bg-[#7f8567] border-[#7f8567] text-white' : 'bg-transparent border-[#262c29] text-[#262c29]');
 
             if ($('.followers-count').length) {
                 $('.followers-count').text(data['followers']);

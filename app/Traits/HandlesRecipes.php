@@ -22,7 +22,7 @@ trait HandlesRecipes
         return User::withCount('followers')
                     ->orderBy('followers_count', 'desc')
                     ->with('profile')
-                    ->take(10)
+                    ->take(6)
                     ->get();
     }
 
@@ -52,7 +52,7 @@ trait HandlesRecipes
 
         return $recipeCountByCategoryWithLatestImg->union($recipeCountByCuisineWithLatestImg)
                                                     ->orderBy('recipes_count', 'desc')
-                                                    ->take(10)
+                                                    ->take(6)
                                                     ->get();
 
     }

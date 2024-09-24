@@ -39,7 +39,7 @@
         @if (auth()->id() == $profile->user_id)
             <x-button type="button" class="w-fit mx-auto" link="/profiles/{{ $profile->user_id }}/edit">Edit Profile</x-button>
         @else
-            <x-follow-button :user="$profile->user" />
+            <x-follow-button class="mx-auto" :user="$profile->user" />
         @endif
     </section>
 

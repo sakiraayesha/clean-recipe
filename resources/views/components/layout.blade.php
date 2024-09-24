@@ -11,7 +11,7 @@
 <body class="min-h-screen flex flex-col font-lato">
     <x-nav></x-nav>
 
-    <main class="px-10 pt-24 pb-10">
+    <main class="px-10 pt-32 pb-10">
         {{ $slot }}
     </main>
 
