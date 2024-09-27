@@ -5,9 +5,9 @@
             <span class="hidden md:block text-[#262c29] tracking-wider">Explore</span>
         </div>
         <div class="hidden lg:flex gap-3">
-            <span class="text-[#262c29] tracking-wider hover:opacity-50">Lunch</span>
-            <span class="text-[#262c29] tracking-wider hover:opacity-50">Dinner</span>
-            <span class="text-[#262c29] tracking-wider hover:opacity-50">Healthy</span>
+            <a href="/explore/topics/Lunch" class="text-[#262c29] tracking-wider hover:opacity-50">Lunch</a>
+            <a href="/explore/topics/Dinner" class="text-[#262c29] tracking-wider hover:opacity-50">Dinner</a>
+            <a href="/explore/topics/Healthy" class="text-[#262c29] tracking-wider hover:opacity-50">Healthy</a>
             <span class="text-[#262c29] tracking-wider hover:opacity-50 explore">More</span>
         </div>
     </div>
